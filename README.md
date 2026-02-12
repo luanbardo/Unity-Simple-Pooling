@@ -1,6 +1,6 @@
-# Simple Pooling
+# Unity Simple Pooling
 
-**SimplePoolingSystem** is a tiny, no-friction object pooling helper for Unity.
+**Unity Simple Pooling** is a tiny, no-friction object pooling helper for Unity.
 
 It gives you a single static API to spawn and despawn prefabs without setting up a full pooling framework.
 No editor windows, no custom inspectors, just `Spawn` and `Despawn`.
