@@ -1,4 +1,4 @@
-# Simple Pooling System
+# Simple Pooling
 
 **SimplePoolingSystem** is a tiny, no-friction object pooling helper for Unity.
 
@@ -19,7 +19,7 @@ Done.
 
 ### Option 2: Manual
 
-Copy the `Assets/SimplePoolingSystem` folder into your Unity project.
+Copy the `SimplePoolingSystem` folder into your Unity project.
 
 ---
 
@@ -50,7 +50,7 @@ It pools by prefab, keeps inactive instances, and reuses them when needed.
 Three simple scripts:
 - `SimplePooling` (static API)
 - `SimplePool` (internal pool implementation)
-- `SimplePooledInstance` (marker component added at runtime)
+- `SimplePooledInstance` (marker component automatically added at runtime)
 
 ---
 
@@ -88,7 +88,12 @@ SimplePooling.Spawn(effectPrefab, parentTransform);
 ### Component-friendly spawn
 
 ```csharp
-Rigidbody2D rb = SimplePooling.Spawn(bulletPrefab.GetComponent<Rigidbody2D>());
+private Projectile bulletPrefab;
+
+private void Fire()
+{
+    Projectile instance = SimplePooling.Spawn(bulletPrefab, transform.position, transform.rotation);
+}
 ```
 
 ---
@@ -109,7 +114,6 @@ This uses `SendMessage`, so the methods are optional.
 - No pre-warm or max-size control
 - Uses `SendMessage` (string-based)
 - Not thread-safe
-- Only works with `GameObject` / `Component` prefabs
 - If you call `Destroy` on an instance manually, it is removed from the pool (it will not be reused)
 
 ---
